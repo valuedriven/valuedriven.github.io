@@ -1,0 +1,30 @@
+name: Log changes to index.htlm
+
+on:
+  push
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    
+    - name: Set up Git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Update index.html
+      run: |
+          git pull origin main
+          sed '/</h1>/ a Log a change on the repository' index.html
+          cat index.html
+    
+    - name: Commit changes
+      run: |
+        git add index.html
+        git diff-index --quiet HEAD || git commit -m 'Update index.html'
+        git push origin main  
