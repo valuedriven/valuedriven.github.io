@@ -20,7 +20,7 @@ jobs:
     - name: Update index.html
       run: |
           git pull origin main
-          sed -i '/<\/h1>/a Log a change on the repository' index.html
+          sed -i '/<\/h2>/a Change logged' index.html
           cat index.html
     
     - name: Commit changes
