@@ -1,7 +1,9 @@
 name: Log changes to index.htlm
 
 on:
-  push
+  #push
+  workflow_dispatch:
+    
 
 jobs:
   log-register:
