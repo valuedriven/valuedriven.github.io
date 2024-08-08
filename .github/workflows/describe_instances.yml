@@ -8,4 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Describe AWS EC2 instances
-      run: aws ec2 describe_instances
+      run: aws ec2 describe-instances
+
